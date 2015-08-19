@@ -29,6 +29,7 @@ public class AMQCacheManagerPeerProviderFactory extends CacheManagerPeerProvider
 	public CacheManagerPeerProvider createCachePeerProvider(
 			CacheManager cacheManager, Properties properties) {
 		ConnectionFactory factory = ObjectMapper.createFrom(ConnectionFactory.class, properties);
+		factory.setAutomaticRecoveryEnabled(true);
 		final String exchangeName = getExchangeName(properties);
 		try {
 			Connection connection = factory.newConnection();
