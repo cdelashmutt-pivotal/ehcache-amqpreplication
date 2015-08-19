@@ -98,6 +98,8 @@ public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
 		try {
 			LOG.info("disposing of provider and closing amqp channel.");
 			channel.close();
+			
+			channel.getConnection().close();
 		} catch (IOException e) {
 			LOG.error(e.getMessage(), e);
 			throw new CacheException(e);
