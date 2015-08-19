@@ -18,6 +18,7 @@ package net.sf.ehcache.amqp;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import net.sf.ehcache.CacheException;
 import net.sf.ehcache.CacheManager;
@@ -101,6 +102,9 @@ public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
 			
 			channel.getConnection().close();
 		} catch (IOException e) {
+			LOG.error(e.getMessage(), e);
+			throw new CacheException(e);
+		} catch (TimeoutException e) {
 			LOG.error(e.getMessage(), e);
 			throw new CacheException(e);
 		}

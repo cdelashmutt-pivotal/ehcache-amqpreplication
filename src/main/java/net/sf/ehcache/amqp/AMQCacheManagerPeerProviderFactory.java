@@ -2,6 +2,7 @@ package net.sf.ehcache.amqp;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeoutException;
 
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.distribution.CacheManagerPeerProvider;
@@ -36,6 +37,8 @@ public class AMQCacheManagerPeerProviderFactory extends CacheManagerPeerProvider
 			AMQCacheManagerPeerProvider amqCacheManagerPeerProvider = new AMQCacheManagerPeerProvider(channel, cacheManager, exchangeName);
 			return amqCacheManagerPeerProvider;
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TimeoutException e) {
 			e.printStackTrace();
 		}
 		return null;

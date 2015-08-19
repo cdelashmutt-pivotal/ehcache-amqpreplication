@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
@@ -75,9 +77,36 @@ public class AMQCachePeer extends DefaultConsumer implements CachePeer {
 
 	public void send(List eventMessages) throws RemoteException {
 		AMQEventMessage message = (AMQEventMessage) eventMessages.get(0);
-		BasicProperties basicProperties = new BasicProperties();
-		basicProperties.setContentType("application/x-java-serialized-object");
-		basicProperties.setType(AMQEventMessage.class.getName());
+	    String contentType = "application/x-java-serialized-object";
+	    String contentEncoding = null;
+	    Map<String, Object> headers = null;
+	    Integer deliveryMode = null;
+	    Integer priority = null;
+	    String correlationId = null;
+	    String replyTo = null;
+	    String expiration = null;
+	    String messageId = null;
+	    Date timestamp = null;
+	    String type = AMQEventMessage.class.getName();
+	    String userId = null;
+	    String appId = null;
+	    String clusterId = null;
+	    BasicProperties basicProperties = new BasicProperties(
+	        contentType,
+	        contentEncoding,
+	                headers,
+	                deliveryMode,
+	                priority,
+	                correlationId,
+	                replyTo,
+	                expiration,
+	                messageId,
+	                timestamp,
+	                type,
+	                userId,
+	                appId,
+	                clusterId
+	                );
 		try {
 			if (LOG.isDebugEnabled()) {
 				LOG.info("Publishing elment with key " + message.getElement() +" with event of " + message.getEvent());
