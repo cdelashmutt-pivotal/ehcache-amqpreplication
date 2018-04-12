@@ -22,7 +22,7 @@ import java.util.Properties;
 /**
  * Description Here.
  * 
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class ObjectMapper {
 	public static <T> T createFrom(Class<T> class1, Properties properties) {

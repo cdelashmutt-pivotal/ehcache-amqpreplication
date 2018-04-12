@@ -15,6 +15,7 @@
  */
 package net.sf.ehcache.amqp;
 
+import java.util.Map;
 import java.util.Properties;
 
 import net.sf.ehcache.Ehcache;
@@ -26,14 +27,18 @@ import net.sf.ehcache.loader.CacheLoaderFactory;
  * are not already in the cache. We'll figure out later how to 
  * handle a large number of them.
  *
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class AMQCacheLoaderFactory extends CacheLoaderFactory{
 
+	public net.sf.jsr107cache.CacheLoader createCacheLoader(Map map) {
+		return new AMQCacheLoader();
+	}
+
 	@Override
-	public CacheLoader createCacheLoader(Ehcache cache, Properties properties) {
+	public CacheLoader createCacheLoader(Properties properties) {
 		
-		return new AMQCacheLoader(cache);
+		return new AMQCacheLoader();
 	}
 
 }

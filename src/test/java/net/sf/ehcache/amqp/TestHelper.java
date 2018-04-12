@@ -17,6 +17,9 @@ public abstract class TestHelper {
 		cacheConfiguration.setName(SIMPLE_CACHE);
 		cacheConfiguration.setMaxElementsInMemory(100);
 		configuration.addCache(cacheConfiguration);
+		CacheConfiguration defaultConfiguration = new CacheConfiguration();
+		defaultConfiguration.setMaxElementsInMemory(100);
+		configuration.addDefaultCache(defaultConfiguration);
 		return new CacheManager(configuration);
 	}
 }

@@ -35,8 +35,8 @@ import com.rabbitmq.client.Channel;
 /**
  * Creates a single AMQCachePeer which handles both publishing of cache events as well
  * as handling cache events received from the amqp queue.
- * 
- * @author James R. Carr <james.r.carr@gmail.com>
+ *
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
 	private static final Logger LOG = LoggerFactory.getLogger(AMQCacheManagerPeerProvider.class);
@@ -74,7 +74,7 @@ public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
     /**
      * Notifies providers to initialise themselves.
      *
-     * @throws CacheException
+     * @throws CacheException if there is a problem initializing connection to RabbitMQ
      */
 	public void init() {
 		try {
@@ -93,7 +93,7 @@ public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
      * Providers may be doing all sorts of exotic things and need to be able to clean up on dispose.
      * In this case, we are simply closing the communication channel.
      *
-     * @throws CacheException
+     * @throws CacheException if there is a problem closing connection to RabbitMQ
      */
 	public void dispose() throws CacheException {
 		try {
@@ -121,7 +121,9 @@ public class AMQCacheManagerPeerProvider implements CacheManagerPeerProvider {
 	}
 
 	/**
-	 * The sheme this provider uses
+	 * The scheme this provider uses
+	 *
+	 * @return The Scheme
 	 */
 	public String getScheme() {
 		return "AMQP";

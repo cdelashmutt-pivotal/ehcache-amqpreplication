@@ -43,7 +43,7 @@ public class AMQCacheReplicator implements CacheReplicator {
      * Called immediately after an element has been put into the cache. The
      * {@link net.sf.ehcache.Cache#put(net.sf.ehcache.Element)} method
      * will block until this method returns.
-     * <p/>
+     * <p>
      * Implementers may wish to have access to the Element's fields, including value, so the
      * element is provided. Implementers should be careful not to modify the element. The
      * effect of any modifications is undefined.
@@ -74,10 +74,10 @@ public class AMQCacheReplicator implements CacheReplicator {
 	/**
      * Called immediately after an element has been put into the cache and the element already
      * existed in the cache. This is thus an update.
-     * <p/>
+     * <p>
      * The {@link net.sf.ehcache.Cache#put(net.sf.ehcache.Element)} method
      * will block until this method returns.
-     * <p/>
+     * <p>
      * Implementers may wish to have access to the Element's fields, including value, so the
      * element is provided. Implementers should be careful not to modify the element. The
      * effect of any modifications is undefined.
@@ -92,9 +92,9 @@ public class AMQCacheReplicator implements CacheReplicator {
 	/**
      * Called immediately after an element is <i>found</i> to be expired. The
      * {@link net.sf.ehcache.Cache#remove(Object)} method will block until this method returns.
-     * <p/>
+     * <p>
      * As the {@link Element} has been expired, only what was the key of the element is known.
-     * <p/>
+     * <p>
      * Elements are checked for expiry in ehcache at the following times:
      * <ul>
      * <li>When a get request is made
@@ -104,12 +104,12 @@ public class AMQCacheReplicator implements CacheReplicator {
      * {@link net.sf.ehcache.Cache#DEFAULT_EXPIRY_THREAD_INTERVAL_SECONDS}
      * </ul>
      * If an element is found to be expired, it is deleted and this method is notified.
-     * <p/>
+     * <p>
      * This message is not replicated by this replicator.
      *
      * @param cache   the cache emitting the notification
      * @param element the element that has just expired
-     *                <p/>
+     *                <p>
      *                Deadlock Warning: expiry will often come from the <code>DiskStore</code>
      *                expiry thread. It holds a lock to the DiskStorea the time the
      *                notification is sent. If the implementation of this method calls into a
@@ -124,10 +124,10 @@ public class AMQCacheReplicator implements CacheReplicator {
      * Called immediately after an element is evicted from the cache. Evicted in this sense
      * means evicted from one store and not moved to another, so that it exists nowhere in the
      * local cache.
-     * <p/>
+     * <p>
      * In a sense the Element has been <i>removed</i> from the cache, but it is different,
      * thus the separate notification.
-     * <p/>
+     * <p>
      * This message is not replicated by this replicator.
      *
      * @param cache   the cache emitting the notification
@@ -177,7 +177,7 @@ public class AMQCacheReplicator implements CacheReplicator {
 	/**
      * Creates a clone of this listener. This method will only be called by ehcache before a
      * cache is initialized.
-     * <p/>
+     * <p>
      * This may not be possible for listeners after they have been initialized. Implementations
      * should throw CloneNotSupportedException if they do not support clone.
      *

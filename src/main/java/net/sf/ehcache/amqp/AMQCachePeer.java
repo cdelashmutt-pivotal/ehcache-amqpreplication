@@ -44,7 +44,7 @@ import com.rabbitmq.client.Envelope;
 /**
  * Description Here.
  *
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class AMQCachePeer extends DefaultConsumer implements CachePeer {
 	private static final String MESSAGE_TYPE_NAME = AMQEventMessage.class.getName();

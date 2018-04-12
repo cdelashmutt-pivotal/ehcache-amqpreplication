@@ -7,7 +7,7 @@ import net.sf.ehcache.distribution.EventMessage;
 /**
  * Description Here.
  *
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class PutEvent extends AMQEventMessage{
 	private static final long serialVersionUID = 1L;

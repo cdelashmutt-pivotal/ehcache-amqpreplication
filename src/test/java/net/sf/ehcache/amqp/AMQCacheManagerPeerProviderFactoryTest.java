@@ -9,10 +9,14 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Connection;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.distribution.CachePeer;
 
@@ -32,6 +36,7 @@ public class AMQCacheManagerPeerProviderFactoryTest {
 	private static final String EXCHANGE_NAME = "EXCHANGE_NAME";
 	@Captor ArgumentCaptor<AMQCachePeer> amqCachePeer;
 	@Mock Channel channel;
+	@Mock Connection connection;
 	private AMQCacheManagerPeerProvider peerProvider;
 	private CacheManager cacheManager = inMemoryCacheManager();
 
@@ -39,6 +44,7 @@ public class AMQCacheManagerPeerProviderFactoryTest {
 	public void beforeEach() {
 		peerProvider = new AMQCacheManagerPeerProvider(channel, cacheManager,
 				EXCHANGE_NAME);
+		when(channel.getConnection()).thenReturn(connection);
 	}
 
 	@Test
@@ -52,7 +58,7 @@ public class AMQCacheManagerPeerProviderFactoryTest {
 		assertNotNull(peer);
 	}
 	@Test
-	public void shouldCloseTheChannelOnDispose() throws IOException{
+	public void shouldCloseTheChannelOnDispose() throws IOException, TimeoutException {
 		peerProvider.dispose();
 		
 		verify(channel).close();

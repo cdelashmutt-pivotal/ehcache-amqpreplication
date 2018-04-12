@@ -6,7 +6,7 @@ import net.sf.ehcache.distribution.EventMessage;
 /**
  * Description Here.
  * 
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class RemoveAllEventMessage extends AMQEventMessage {
 

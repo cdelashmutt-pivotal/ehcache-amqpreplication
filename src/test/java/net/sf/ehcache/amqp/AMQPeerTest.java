@@ -42,6 +42,7 @@ public class AMQPeerTest {
 	Channel channel;
 	private CacheManager manager;
 	private AMQCachePeer responder;
+	private String cacheGuid = "0a926712-0c27-4cc8-8183-c89f1a7737b8";
 
 	@Before
 	public void beforeEach() {
@@ -147,13 +148,13 @@ public class AMQPeerTest {
 
 	private AMQEventMessage message(int type, Element element, String cacheName) {
 		return new AMQEventMessage(type, element != null ? element.getKey()
-				: "", element, cacheName);
+				: "", element, cacheName, cacheGuid);
 	}
 
 	private BasicProperties basicPropertiesForMessage() {
-		BasicProperties basicProperties = new BasicProperties();
-		basicProperties.setType(AMQEventMessage.class.getName());
-		return basicProperties;
+		BasicProperties.Builder basicPropertiesBuilder = new BasicProperties.Builder();
+		basicPropertiesBuilder.type(AMQEventMessage.class.getName());
+		return basicPropertiesBuilder.build();
 	}
 
 }

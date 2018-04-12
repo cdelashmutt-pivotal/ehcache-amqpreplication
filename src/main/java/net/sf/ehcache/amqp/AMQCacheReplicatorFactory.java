@@ -23,7 +23,7 @@ import net.sf.ehcache.event.CacheEventListenerFactory;
 /**
  * A factory for creating JMSCacheReplicators.
  * 
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class AMQCacheReplicatorFactory extends CacheEventListenerFactory {
 	@Override

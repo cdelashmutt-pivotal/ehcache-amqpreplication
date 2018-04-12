@@ -28,7 +28,7 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 /**
  * Description Here.
  *
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class AMQEventMessage extends EventMessage{
 	private static final long serialVersionUID = 1L;

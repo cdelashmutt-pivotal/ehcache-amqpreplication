@@ -14,7 +14,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 /**
  * 
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  *
  */
 public class AMQCacheManagerPeerProviderFactory extends CacheManagerPeerProviderFactory{

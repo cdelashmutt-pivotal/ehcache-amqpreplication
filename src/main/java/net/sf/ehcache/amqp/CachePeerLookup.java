@@ -25,13 +25,13 @@ import net.sf.ehcache.distribution.CachePeer;
  * Simple wrapper around the logic to lookup the cache peer provider
  * for a particular cache. 
  *
- * @author James R. Carr <james.r.carr@gmail.com>
+ * @author <a href="mailto:james.r.carr@gmail.com">James R. Carr</a>
  */
 public class CachePeerLookup{
 	@SuppressWarnings("unchecked")
 	public List<CachePeer> listRemoteCachePeers(Ehcache cache) {
 		CacheManagerPeerProvider provider = cache.getCacheManager()
-				.getCacheManagerPeerProvider("AMQP");
+				.getCacheManagerPeerProvider();
 		return provider.listRemoteCachePeers(cache);
 	}
 }
